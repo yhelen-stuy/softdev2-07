@@ -1,4 +1,5 @@
 var pic = document.getElementById("vimage");
+var clearB = document.getElementById("clear");
 var h = pic.getAttribute("height");
 var w = pic.getAttribute("width");
 var cX = -1;
@@ -26,6 +27,17 @@ var connect = function(x1, y1, x2, y2) {
     pic.appendChild(line);
 }
 
+var reset = function() {
+    cX = -1;
+    cY = -1;
+}
+
+var clear = function(e) {
+    e.preventDefault();
+    pic.innerHTML = '';
+    reset();
+}
+
 // Currently sets svg fill to green
 var change = function(e) {
     e.preventDefault();
@@ -51,3 +63,4 @@ var draw = function(e) {
 
 // pic.addEventListener("click", change);
 pic.addEventListener("click", draw);
+clearB.addEventListener("click", clear);
